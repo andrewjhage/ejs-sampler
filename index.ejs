@@ -1,0 +1,29 @@
+<%- include('../partials/head.ejs') %>
+
+<body>
+    <div class="container">
+        <div class="mt-4 p-5 bg-warning text-white rounded">
+        <h1><%=title %></h1>
+        </div>
+<%- include('../partials/menu.ejs') %>
+
+    <div class="d-flex flex-column flex-sm-column flex-md-row flex-lg-row">
+    <% data.forEach(function(meetings) { %> 
+
+        <p class="note"><img src="/images/entrance.jpeg">
+        <% if (meetings.mandatory) { %>
+            <span class="takenote">Attendance Mandatory!</span>
+        <% } %>
+                <%= meetings.location %>,
+                <%= meetings.dateTime %>,
+                <%= meetings.topic %> 
+            <button type="button" class="parking btn btn-warning" data-bs-toggle="modal" data-bs-target="#parkingModal" id= <%=meetings.id %>>
+                Parking
+            </button>
+            </p>
+    <% }); %>
+    <%- include('../partials/footer.ejs') %>
+</div>
+<%- include('../partials/parkingmodal.ejs') %>
+<script src='/data/data.js'></script>
+</body>
